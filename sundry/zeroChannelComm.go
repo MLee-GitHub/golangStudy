@@ -1,9 +1,9 @@
-package main
+package sundry
 
 import "fmt"
 import "time"
 
-func main() {
+func ChanNilArr() {
 	c1, c2 := make(chan struct{}), make(chan struct{})
 	go useZeroArray(c1)
 	go useZeroStruct(c2)

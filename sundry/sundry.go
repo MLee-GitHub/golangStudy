@@ -1,11 +1,11 @@
-package main
+package sundry
 
 import (
 	"flag"
 	"fmt"
 )
 
-func main() {
+func Encode() {
 	var which = flag.Int("w", 0, "specified functioin to test")
 	flag.Parse()
 
