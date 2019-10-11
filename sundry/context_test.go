@@ -14,7 +14,7 @@ func TestWork(t *testing.T){
 
 	fmt.Println("start work.")
 	var wg = new(sync.WaitGroup)
-	wg.Add(1)
+	wg.Add(1) // 控制routine完成工作
 	go work(ctx, wg)
 	wg.Wait()
 
