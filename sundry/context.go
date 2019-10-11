@@ -9,7 +9,7 @@ import (
 
 
 func work(ctx context.Context, wg *sync.WaitGroup) error{
-	//defer wg.Done()
+	defer wg.Done() // wg应为引用类型（或者不穿入wg，使用闭包类型直接使用外部wg变量），如若不然，只是wg的副本Done，而原wg将一直Wait，从而出现deadlock
 
 	for i := 0; i <= 1000; i++{
 		select {
