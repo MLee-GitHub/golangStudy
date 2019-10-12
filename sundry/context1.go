@@ -88,9 +88,11 @@ func writeLoop(c *ServerConn, wg *sync.WaitGroup) {
 //type redisJob struct {
 //	uuid string
 //}
+
 //func NewVideoPacketServer () *VideoPacketServer {
 //	v := &VideoPacketServer{
-//		redisChan: make(chan *redisJob, 10000)
+//		redisChan: make(chan *redisJob, 10000) // 异步任务
+//		msgChan: make(chan *Msg, 10000)
 //	}
 //	go v.ProcessWriteToRedis()
 //	go v.ProcessWriteToBoss()
@@ -100,7 +102,19 @@ func writeLoop(c *ServerConn, wg *sync.WaitGroup) {
 //	for {
 //		select {
 //		case j := <-v.redisJob:
-//			xxxxxx
+//			xxxxxx // 消费j
 //		}
 //	}
 //}
+
+type Msg struct {
+	handleMsg chan []byte
+	sendMsg chan []byte
+	ctx context.Context
+	cancel context.CancelFunc
+}
+
+func (v *VideoPacketServer)invoke(ctx context.Context, req []byte) []byte{
+	v.redisChan <- &redisJob{uuid: uuid}
+
+}
