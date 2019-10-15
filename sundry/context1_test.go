@@ -33,3 +33,5 @@ func TestContext1(t *testing.T) {
 	conn.wg.Wait()
 	fmt.Println("send end.")
 }
+
+// go test -v context1.go context1_test.go // 测试指定测试文件

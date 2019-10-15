@@ -108,13 +108,14 @@ func writeLoop(c *ServerConn, wg *sync.WaitGroup) {
 //}
 
 type Msg struct {
+	sync.Mutex
 	handleMsg chan []byte
 	sendMsg chan []byte
 	ctx context.Context
 	cancel context.CancelFunc
 }
 
-func (v *VideoPacketServer)invoke(ctx context.Context, req []byte) []byte{
-	v.redisChan <- &redisJob{uuid: uuid}
-
-}
+//func (v *VideoPacketServer)invoke(ctx context.Context, req []byte) []byte{
+//	v.redisChan <- &redisJob{uuid: uuid}
+//
+//}
