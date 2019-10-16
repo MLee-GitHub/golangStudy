@@ -75,3 +75,12 @@ func TestBubbleSort(t *testing.T) {
 	print("bubble sort", dataCpy, data)
 	AssertEqual(t, true, sort.IntsAreSorted(data))
 }
+
+func TestSheelSort(t *testing.T) {
+	data := getData(num, strategy)
+	dataCpy := make([]int, len(data))
+	copy(dataCpy, data)
+	SheelSort(data)
+	print("shell sort", dataCpy, data)
+	AssertEqual(t, true, sort.IntsAreSorted(data))
+}
